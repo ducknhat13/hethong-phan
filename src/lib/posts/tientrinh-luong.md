@@ -11,9 +11,9 @@ coverHeight: 9
 excerpt: Discover the concept of Processes and Threads in Distributed Systems!
 ---
 
-# Khai thác hiệu năng máy tính và đa lượng trong CNTT
+## Khai thác hiệu năng máy tính và đa lượng trong CNTT
 
-## 1. Đánh giá hiệu năng máy tính đang sử dụng
+### 1. Đánh giá hiệu năng máy tính đang sử dụng
 
 Hiện tại, tôi đang sử dụng thiết bị với cấu hình:
 
@@ -22,6 +22,7 @@ Hiện tại, tôi đang sử dụng thiết bị với cấu hình:
 - **RAM:** 16GB DDR4
 
 **Đánh giá:**
+
 - **CPU** mạnh mẽ với 16 luồng, hỗ trợ tiến trình và đa luồng tốt cho các ứng dụng như lập trình song song, chạy máy ảo, render video.
 - **GPU RTX 3060** có khả năng xử lý đồ họa cao, thích hợp cho deep learning, gaming, đồ họa 3D.
 - **RAM 16GB** đủ cho các công việc lập trình, IDE, chạy máy ảo nhẹ, nhưng có thể hạn chế nếu training mô hình AI lớn hoặc sử dụng nhiều container.
@@ -30,7 +31,7 @@ Hiện tại, tôi đang sử dụng thiết bị với cấu hình:
 
 ---
 
-## 2. 12 bài toán phổ biến trong CNTT và ứng dụng đa tiến trình/đa luồng
+### 2. 12 bài toán phổ biến trong CNTT và ứng dụng đa tiến trình/đa luồng
 
 | Bài toán             | Đa tiến trình | Đa luồng |
 |----------------------|---------------|----------|
@@ -49,7 +50,7 @@ Hiện tại, tôi đang sử dụng thiết bị với cấu hình:
 
 ---
 
-## 3. Khi nào dùng Thread, khi nào dùng Process?
+### 3. Khi nào dùng Thread, khi nào dùng Process?
 
 | Tình huống                          | Nên dùng Thread | Nên dùng Process | Cả hai |
 |-------------------------------------|------------------|------------------|--------|
@@ -63,12 +64,13 @@ Hiện tại, tôi đang sử dụng thiết bị với cấu hình:
 | Streaming media                     | ✅                | ✅                | ✅      |
 
 **Ví dụ:**
+
 - **Xử lý ảnh bằng OpenCV:** Dùng process để chia ảnh ra và thread để xử lý từng phần.
 - **App chat:** Thread xử lý GUI và kết nối.
 
 ---
 
-## 4. ChatGPT training dữ liệu lớn bằng hệ thống phân tán như thế nào?
+### 4. ChatGPT training dữ liệu lớn bằng hệ thống phân tán như thế nào?
 
 ChatGPT được huấn luyện trên hệ thống siêu máy tính của Microsoft (Azure), sử dụng các kỹ thuật **distributed training**:
 
@@ -76,12 +78,14 @@ ChatGPT được huấn luyện trên hệ thống siêu máy tính của Micros
 - **Model Parallelism:** Chia cấu trúc mô hình ra các GPU khác nhau.
 - **Pipeline Parallelism:** Chia mô hình theo lớp và xử lý theo pipeline.
 
-**Framework sử dụng:** 
+**Framework sử dụng:**
+
 - DeepSpeed (Microsoft)
 - Megatron-LM (NVIDIA)
 - PyTorch DDP
 
 **Tài liệu tham khảo:**
-- [Building one of the world’s top five supercomputers to train OpenAI](https://blogs.microsoft.com/blog/2020/05/13/building-one-of-the-worlds-top-five-supercomputers-to-train-openai/)
+
+- [Building one of the world's top five supercomputers to train OpenAI](https://blogs.microsoft.com/blog/2020/05/13/building-one-of-the-worlds-top-five-supercomputers-to-train-openai/)
 - [Megatron-LM on arXiv](https://arxiv.org/abs/2005.14165)
 - [Megatron-LM GitHub](https://github.com/NVIDIA/Megatron-LM)

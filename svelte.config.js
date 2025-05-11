@@ -5,31 +5,33 @@ import rehypeSlug from "rehype-slug";
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-	// Ensures both .svelte and .md files are treated as components (can be imported and used anywhere, or used as pages)
 	extensions: [".svelte", ".md"],
 
 	kit: {
-		adapter: adapter(),
+		adapter: adapter({
+			fallback: "200.html"
+		}),
 		prerender: {
 			entries: [
-				"*",
-				"/api/posts/page/*",
-				"/blog/category/*/page/",
-				"/blog/category/*/page/*",
-				"/blog/category/page/",
-				"/blog/category/page/*",
-				"/blog/page/",
-				"/blog/page/*",
-			],
-		},
+				"/",
+				"/blog",
+				"/blog/category",
+				"/api/posts.json",
+				"/api/rss.xml",
+				"/api/posts/count",
+				"/api/posts/page/1",
+				"/blog/category/page/[page]",
+				"/blog/category/[category]/page",
+				"/blog/category/[category]/page/[page]",
+				"/blog/page",
+				"/blog/page/[page]"
+			]
+		}
 	},
 
 	preprocess: [
 		mdsvex({
-			// The default mdsvex extension is .svx; this overrides that.
 			extensions: [".md"],
-
-			// Adds IDs to headings, and anchor links to those IDs. Note: must stay in this order to work.
 			rehypePlugins: [
 				rehypeSlug,
 				rehypeAutolinkHeadings,
@@ -38,4 +40,4 @@ const config = {
 	],
 };
 
-export default config;
+export default config; 
