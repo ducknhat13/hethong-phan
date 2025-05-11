@@ -99,14 +99,14 @@ Dự án này nhằm xây dựng một hệ thống blog đơn giản cho phép 
 
 ##### Các thành phần chính
 
-- **API Server (Node.js hoặc Java)**: Cung cấp REST API cho CRUD bài viết.
+- **API Server (Node.js + Express)**: Cung cấp REST API cho CRUD bài viết.
 - **Cassandra Cluster (2 node)**: Lưu trữ dữ liệu bài viết.
-- **Frontend (tùy chọn)**: Sử dụng blog hiện có ([nhatqwe.netlify.app/blog](https://nhatqwe.netlify.app/blog))
+- **Frontend**: Sử dụng blog hiện có ([nhatqwe.netlify.app/blog](https://nhatqwe.netlify.app/blog))
 
 ##### Mô hình triển khai
 
-- **2 máy Docker hoặc VM**:
-  - Mỗi máy chạy 1 node Cassandra và/hoặc 1 API Server.
+- **2 máy Docker**:
+  - Mỗi máy chạy 1 node Cassandra và 1 API Server.
   - Giao tiếp phân tán qua HTTP và Cassandra Driver (TCP).
 
 ---
