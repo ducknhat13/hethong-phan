@@ -101,7 +101,7 @@ Dự án này nhằm xây dựng một hệ thống blog đơn giản cho phép 
 
 - **API Server (Node.js hoặc Java)**: Cung cấp REST API cho CRUD bài viết.
 - **Cassandra Cluster (2 node)**: Lưu trữ dữ liệu bài viết.
-- **Frontend (tùy chọn)**: Sử dụng blog hiện có ([nhatqwe.netlify.app/blog](https://nhatqwe.netlify.app/blog)) hoặc tương tác qua Postman/cURL.
+- **Frontend (tùy chọn)**: Sử dụng blog hiện có ([nhatqwe.netlify.app/blog](https://nhatqwe.netlify.app/blog))
 
 ##### Mô hình triển khai
 
