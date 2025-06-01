@@ -1,23 +1,22 @@
 {
-  "name": "distributed-blog",
+  "name": "distributed-blog-api",
   "version": "1.0.0",
-  "description": "Distributed blog system using Apache Cassandra",
-  "main": "src/index.js",
+  "description": "Distributed Blog API with Cassandra",
+  "main": "src/server.js",
   "scripts": {
-    "start": "node src/index.js",
-    "dev": "nodemon src/index.js",
-    "test": "jest"
+    "start": "node src/server.js",
+    "test": "jest",
+    "stress-test": "node src/test.js"
   },
   "dependencies": {
-    "express": "^4.18.2",
-    "cassandra-driver": "^4.7.2",
-    "uuid": "^9.0.1",
-    "winston": "^3.11.0",
+    "axios": "^1.6.7",
+    "cassandra-driver": "^4.7.0",
     "cors": "^2.8.5",
-    "dotenv": "^16.3.1"
+    "express": "^4.18.2",
+    "uuid": "^9.0.1",
+    "winston": "^3.11.0"
   },
   "devDependencies": {
-    "nodemon": "^3.0.2",
     "jest": "^29.7.0"
   }
 } 

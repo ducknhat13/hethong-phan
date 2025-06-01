@@ -1,0 +1,81 @@
+services:
+  cassandra1:
+    image: cassandra:4.1
+    container_name: cassandra1
+    ports:
+      - "9042:9042"
+    volumes:
+      - cassandra1_data:/var/lib/cassandra
+    environment:
+      - CASSANDRA_CLUSTER_NAME=blog_cluster
+      - CASSANDRA_SEEDS=cassandra1,cassandra2
+      - CASSANDRA_DC=datacenter1
+    networks:
+      - blog_network
+
+  cassandra2:
+    image: cassandra:4.1
+    container_name: cassandra2
+    ports:
+      - "9043:9042"
+    volumes:
+      - cassandra2_data:/var/lib/cassandra
+    environment:
+      - CASSANDRA_CLUSTER_NAME=blog_cluster
+      - CASSANDRA_SEEDS=cassandra1,cassandra2
+      - CASSANDRA_DC=datacenter1
+    networks:
+      - blog_network
+
+  api1:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.api
+    container_name: api1
+    ports:
+      - "3001:3000"
+    environment:
+      - CASSANDRA_HOSTS=cassandra1,cassandra2
+      - NODE_ID=1
+    depends_on:
+      - cassandra1
+      - cassandra2
+    networks:
+      - blog_network
+
+  api2:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.api
+    container_name: api2
+    ports:
+      - "3002:3000"
+    environment:
+      - CASSANDRA_HOSTS=cassandra1,cassandra2
+      - NODE_ID=2
+    depends_on:
+      - cassandra1
+      - cassandra2
+    networks:
+      - blog_network
+
+  nginx:
+    image: nginx:alpine
+    container_name: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - api1
+      - api2
+    networks:
+      - blog_network
+
+volumes:
+  cassandra1_data:
+  cassandra2_data:
+
+networks:
+  blog_network:
+    driver: bridge 
